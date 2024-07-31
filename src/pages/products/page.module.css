@@ -1,4 +1,20 @@
+.username {
+  font-size: 16px;
+  line-height: 20.83px;
+  color: #646464;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.44px;
+  margin-top: 15px;
+}
+
 .grid {
+  margin-top: 17px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 13px;

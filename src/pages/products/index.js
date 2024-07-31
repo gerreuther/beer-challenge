@@ -23,10 +23,15 @@ export async function getServerSideProps() {
 
 export default function Products({ products }) {
   return (
-    <div className={styles.grid}>
-      {products.map((item) => (
-        <ProductCard product={item} key={item.id} />
-      ))}
-    </div>
+    <>
+      <p className={styles.username}>Hi Mr. Michael,</p>
+      <h1>Welcome Back!</h1>
+      <h2 className={styles.title}>Our Products</h2>
+      <div className={styles.grid}>
+        {products.map((item) => (
+          <ProductCard product={item} key={item.id} />
+        ))}
+      </div>
+    </>
   );
 }
