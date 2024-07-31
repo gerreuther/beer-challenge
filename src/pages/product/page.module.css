@@ -1,0 +1,78 @@
+.title {
+  margin-top: 55px;
+  display: flex;
+  justify-content: space-between;
+  color: #0f0d23;
+}
+
+.title h2,
+.title span {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.title span {
+  color: #ff9f24;
+}
+
+.details {
+  color: #969696;
+  font-size: 14px;
+  font-weight: 400px;
+  line-height: 18.23px;
+  margin-top: 4px;
+  margin-bottom: 7px;
+}
+
+.subtitle {
+  margin-top: 22px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.83px;
+  color: #323232;
+}
+
+.information {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* truncate to 4 lines */
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
+.readMore {
+  color: #ff9f24;
+  font-weight: 700;
+}
+
+.sizes {
+  display: flex;
+  gap: 16px;
+}
+
+.sizes div {
+  margin-top: 13px;
+  padding: 8px 12px;
+  border: 1px solid #969696;
+  font-size: 14px;
+  color: #969696;
+  border-radius: 16px;
+  text-wrap: nowrap;
+}
+.sizes .selected {
+  border-color: #ff9f24;
+  color: #ff9f24;
+}
+
+.actions {
+  margin-top: 50px;
+  display: flex;
+  gap: 24px;
+}
+
+.bagButton {
+  border: 0.8px solid #ff9f24;
+  border-radius: 12px;
+  padding: 15px;
+}
