@@ -66,7 +66,12 @@ export default function ProductDetail({ product }) {
       />
       <div className={styles.title}>
         <h2>{product.brand}</h2>
-        <span>${selectedSize.price / 100}</span>
+        <span>
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          }).format(selectedSize.price / 100)}
+        </span>
       </div>
       <div className={styles.details}>
         Origin: {product.origin} | Stock: {selectedSize.stock}

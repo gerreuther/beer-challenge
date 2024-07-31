@@ -33,6 +33,7 @@
 }
 
 .information {
+  margin-top: 8px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -49,6 +50,7 @@
 .sizes {
   display: flex;
   gap: 16px;
+  overflow-x: scroll;
 }
 
 .sizes div {
