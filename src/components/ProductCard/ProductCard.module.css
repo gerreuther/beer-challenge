@@ -19,7 +19,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  color: #323232;
+  color: var(--secondary);
 }
 
 .bottom {
@@ -39,7 +39,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #ff9f24;
+  background-color: var(--primary);
   width: 40px;
   height: 40px;
   padding: 8px;

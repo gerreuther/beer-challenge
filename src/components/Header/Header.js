@@ -25,11 +25,17 @@ const Header = () => {
             src={dotsIcon}
             width={24}
             alt='Options icon'
+            onClick={() => alert('Some options')}
           />
         </header>
       ) : (
         <header className={styles.container}>
-          <Image src={menu} width={24} alt='Toggle menu icon' />
+          <Image
+            src={menu}
+            width={24}
+            alt='Toggle menu icon'
+            onClick={() => alert('Should toggle navigation menu')}
+          />
           <Image
             className={styles.avatar}
             src={avatar}

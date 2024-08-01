@@ -5,7 +5,7 @@
   margin-bottom: 24px;
   font-size: 18px;
   font-weight: 700;
-  color: #323232;
+  color: var(--secondary);
 }
 
 .avatar {

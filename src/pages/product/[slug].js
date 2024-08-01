@@ -138,7 +138,13 @@ export default function ProductDetail({ product }) {
       </div>
       <div className={styles.actions}>
         <div className={styles.bagButton}>
-          <Image src={bagIcon} width={24} height={24} alt='Bag icon' />
+          <Image
+            src={bagIcon}
+            width={24}
+            height={24}
+            alt='Bag icon'
+            onClick={() => alert('Should display shopping cart')}
+          />
         </div>
         <AddToCartButton item={product} size={selectedSize} />
       </div>
