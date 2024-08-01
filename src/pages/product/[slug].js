@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import AddToCartButton from '@/components/AddToCartButton/AddToCartButton';
 import bagIcon from '@/assets/bag-icon.png';
@@ -50,6 +50,39 @@ export async function getStaticProps({ params }) {
 export default function ProductDetail({ product }) {
   const router = useRouter();
   const [selectedSize, setSelectedSize] = useState(product.skus[0]);
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const [latestProduct, setLatestProduct] = useState(product);
+
+  // This checks for stock and prices updates but throws a CORS
+
+  // useEffect(() => {
+  //   // We make sure the page isn't loading
+  //   if (!router.isFallback) {
+  //     // Interval to update stock and prices every 5 seconds
+  //     const interval = setInterval(async () => {
+  //       // Get updated values
+  //       const updatedSkus = await Promise.all(
+  //         latestProduct.skus.map(async (sku) => {
+  //           const skuRes = await fetch(
+  //             `http://localhost:3001/api/stock-price/${sku.code}`
+  //           );
+  //           const skuData = await skuRes.json();
+  //           return { ...sku, ...skuData };
+  //         })
+  //       );
+
+  //       //Update product state with latest data
+  //       setLatestProduct((prevState) => ({
+  //         ...prevState,
+  //         skus: updatedSkus,
+  //       }));
+  //     }, 5000);
+
+  //     //Clearing interval
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [router.isFallback, latestProduct.skus]);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -77,8 +110,20 @@ export default function ProductDetail({ product }) {
         Origin: {product.origin} | Stock: {selectedSize.stock}
       </div>
       <h3 className={styles.subtitle}>Description</h3>
-      <p className={styles.information}>{product.information}</p>
-      <span className={styles.readMore}>Read more</span>
+      <p
+        className={[
+          styles.information,
+          !showFullDescription && styles.truncate,
+        ].join(' ')}
+      >
+        {product.information}
+      </p>
+      <span
+        className={styles.readMore}
+        onClick={() => setShowFullDescription(!showFullDescription)}
+      >
+        {showFullDescription ? 'Read less' : 'Read more'}
+      </span>
       <h3 className={styles.subtitle}>Size</h3>
       <div className={styles.sizes}>
         {product.skus.map((size) => (

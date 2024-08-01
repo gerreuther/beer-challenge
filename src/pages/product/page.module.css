@@ -34,6 +34,9 @@
 
 .information {
   margin-top: 8px;
+}
+
+.truncate {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
