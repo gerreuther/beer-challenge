@@ -3,6 +3,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, you will need to run the backend server from the backend project so that the endpoints used here are available.
+Navigate to the project's folder and run:
+
+```bash
+npm install
+```
+
 Then run the development server with any of the following commands:
 
 ```bash
