@@ -54,35 +54,39 @@ export default function ProductDetail({ product }) {
 
   const [latestProduct, setLatestProduct] = useState(product);
 
-  // This checks for stock and prices updates but throws a CORS
+  // This checks for stock and prices updates but throws a CORS. Never done this before, not sure is very performant.
 
-  // useEffect(() => {
-  //   // We make sure the page isn't loading
-  //   if (!router.isFallback) {
-  //     // Interval to update stock and prices every 5 seconds
-  //     const interval = setInterval(async () => {
-  //       // Get updated values
-  //       const updatedSkus = await Promise.all(
-  //         latestProduct.skus.map(async (sku) => {
-  //           const skuRes = await fetch(
-  //             `http://localhost:3001/api/stock-price/${sku.code}`
-  //           );
-  //           const skuData = await skuRes.json();
-  //           return { ...sku, ...skuData };
-  //         })
-  //       );
+  useEffect(() => {
+    // We make sure the page isn't loading
+    if (!router.isFallback) {
+      // Interval to update stock and prices every 5 seconds
+      const interval = setInterval(async () => {
+        // Get updated values
+        const updatedSkus = await Promise.all(
+          latestProduct.skus.map(async (sku) => {
+            const skuRes = await fetch(
+              `http://localhost:3001/api/stock-price/${sku.code}`
+            );
+            const skuData = await skuRes.json();
+            return { ...sku, ...skuData };
+          })
+        );
 
-  //       //Update product state with latest data
-  //       setLatestProduct((prevState) => ({
-  //         ...prevState,
-  //         skus: updatedSkus,
-  //       }));
-  //     }, 5000);
+        //Update product state with latest data
+        setLatestProduct((prevState) => ({
+          ...prevState,
+          skus: updatedSkus,
+        }));
+        const updatedSelection = updatedSkus.find(
+          (item) => item.code === selectedSize.code
+        );
+        setSelectedSize(updatedSelection);
+      }, 5000);
 
-  //     //Clearing interval
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [router.isFallback, latestProduct.skus]);
+      //Clearing interval
+      return () => clearInterval(interval);
+    }
+  }, [router.isFallback, latestProduct.skus, selectedSize.code]);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
