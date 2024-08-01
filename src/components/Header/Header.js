@@ -8,7 +8,6 @@ import styles from './Header.module.css';
 
 const Header = () => {
   const router = useRouter();
-  console.log(router);
   return (
     <>
       {router.pathname === '/product/[slug]' ? (
